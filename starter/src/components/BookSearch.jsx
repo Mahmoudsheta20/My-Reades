@@ -96,7 +96,7 @@ console.log(getid)
                               width: 128,
                               height: 193,
                               backgroundImage:
-                                `url(${b.imageLinks.smallThumbnail? b.imageLinks.smallThumbnail:''})`,
+                                `url(${b.imageLinks? b.imageLinks.smallThumbnail:''})`,
                             }}
                           ></div>
                           <div className="book-shelf-changer">

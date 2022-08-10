@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect} from "react";
-import { getAll, update} from "../BooksAPI";
+import {AllData, Update} from './bookapi'
 
 
 const BookShelf = ({titel}) => {
@@ -13,17 +13,7 @@ useEffect (() => {
 
 console.log('useEffect')
 
- const getAlldata = async() => {
-
-const data = await getAll()
-            setall(data)
-     
-        }
-
-        getAlldata()
-        
-
-
+AllData().then(data => setall((data)))
     }
 
     , [all])
@@ -31,16 +21,8 @@ const data = await getAll()
 
 
 useEffect(()=>{
-  console.log('uselayouteffect')
 
-const updatebook = (id,shelf) =>{
-
-update(id, shelf)
-
-
-
-}
-updatebook(id,shelf)
+  Update(id,shelf)
 
 },[id,shelf])
 
@@ -60,6 +42,16 @@ const handel = (e,b) =>{
   setid(e)
   setshelf(b)
 }
+
+
+const HandelSelect = (value, shelf)=>{
+
+  if(value === shelf){
+  
+    return `✓${value}`
+  }else{
+    return value
+  }}
 
   return (
 
@@ -85,22 +77,27 @@ const handel = (e,b) =>{
                             }}
                           ></div>
                           <div className="book-shelf-changer">
-                            <select  onChange={(e)=>  handel(m, e.target.value)}
-                            
-                            >
-                              <option value="none" disabled>Move to...</option>
+
+
+
+
+
+                          <select defaultValue={'none'} onChange={(e)=>  handel(m, e.target.value)}
                               
-                              <option></option>
-                              
+                              >
+                                <option value="none" disabled>Move to...</option>
+                                
+                                <option></option>
+                                
+                                 
+                                
                                
-                              
-                             
-                             
-                              <option value="wantToRead">Want to Read</option>
-                            <option value="currentlyReading"> Currently Reading</option>
-                              <option value="read"  >Read</option>
-                              <option value="none">None</option>
-                            </select>
+                               
+                                <option value="wantToRead"> {HandelSelect("wantToRead",m.shelf)} </option>
+                              <option value="currentlyReading">{HandelSelect("currentlyReading",m.shelf)} </option>
+                                <option value="read"  >{HandelSelect("read",m.shelf)}</option>
+                                <option value="none">None</option>
+                              </select>
                           </div>
                         </div>
                         <div className="book-title">{m.title}</div>

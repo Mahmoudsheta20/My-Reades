@@ -1,12 +1,12 @@
 # MyReads Project
 
-<<<<<<< HEAD
-=======
+HEAD
+
 The app consists of two pages: the main page and the search page.
 The main page shows 3 shelves with books.
 Clicking on + icon on the main page links to search page, where more books may be added to your shelves.
 You can assign the books to shelves, both from the search page and the homepage.
->>>>>>> 8782d7f6ee9eb6057672ab79999df0297e31ed86
+
 
 * The app consists of two pages: the main page and the search page.
 * The main page shows 3 shelves with books.
